@@ -1,4 +1,4 @@
-import {messagesList, pubsub} from "./pubsub"
+import {messagesList, pubsub} from "./pubsub";
 
 class BasePage {
 
@@ -19,6 +19,11 @@ class BasePage {
 
     initPage(page) {
         this.page = page
+    }
+
+    initChild(childClass, childSelector) {
+        return new childClass({selector: childSelector})
+
     }
 }
 

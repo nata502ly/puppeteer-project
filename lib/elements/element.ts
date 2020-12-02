@@ -1,4 +1,5 @@
-import {messagesList, pubsub} from "./pubsub";
+import {messagesList, pubsub} from "../pubsub";
+import {waits} from "../helpers"
 
 class BaseElement {
         private page: any;
@@ -17,6 +18,7 @@ class BaseElement {
     }
 
     private async initElement() {
+        await waits.waitForVisible(this, 2500);
         this.currentElement = await this.page.$(this.selector)
 
     }
@@ -33,6 +35,13 @@ class BaseElement {
             await this.initElement()
         }
         await this.currentElement.click()
+    }
+
+    async get() {
+        if(!this.currentElement) {
+            await this.initElement()
+        }
+        return this.currentElement.evaluate(node => node.innerText)
     }
 }
 

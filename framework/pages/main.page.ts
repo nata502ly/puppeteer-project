@@ -1,8 +1,5 @@
-import {BasePage, _$, BaseElement} from "../../lib"
-
-const userNameSelector = 'input#username';
-const passwordSelector = 'input#password';
-const submitSelector = 'button[type="submit"]';
+import {BasePage, BaseElement} from "../../lib";
+import {Input, Button} from '../../lib'
 
 class MainPage extends BasePage{
     private userName: BaseElement;
@@ -11,9 +8,9 @@ class MainPage extends BasePage{
 
     constructor() {
         super('#content', 'Main page');
-        this.userName =  _$(userNameSelector);
-        this.password =  _$(passwordSelector);
-        this.submit =  _$(submitSelector);
+        this.userName = this.initChild(Input, 'input#username');
+        this.password = this.initChild(Input, 'input#password');
+        this.submit = this.initChild(Button, 'button[type="submit"]')
     }
 
     async loginToSystem(username, password) {

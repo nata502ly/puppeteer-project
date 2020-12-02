@@ -1,7 +1,10 @@
 import {browser} from "../lib";
-import {MainPage} from "../framework/pages/main.page"
+import {MainPage, TablePage} from "../framework/pages";
+import {expect} from 'chai'
 
 const mainPage = new MainPage();
+const tablePage = new TablePage();
+
 
 describe('Main page', function(){
 
@@ -14,6 +17,7 @@ describe('Main page', function(){
     });
 
     it("should login", async function() {
-        await mainPage.loginToSystem('tomsmith', 'SuperSecretPassword!')
+        await mainPage.loginToSystem('tomsmith', 'SuperSecretPassword!');
+        expect(await tablePage.getHeaderTitle()).to.contain('You logged into a secure area!')
     })
 });

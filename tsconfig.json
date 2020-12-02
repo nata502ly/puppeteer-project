@@ -7,5 +7,19 @@
     "types": ["@types/puppeteer",
     "@types/chai", "@types/mocha"]
   },
-  "include" : ["lib/**/*.ts", "specs/**/*.ts", "framework/**/*.ts"]
+  "include" : [
+    "lib/**/*.ts",
+    "specs/**/*.ts",
+    "framework/**/*.ts"
+  ],
+  "baseUrl": "./src",
+//  "rootDir": ".",
+  "paths": {
+    "@base/*": [
+      "lib/base.page.ts"
+    ],
+    "@framework/*": [
+      "framework/*"
+    ]
+  }
 }
